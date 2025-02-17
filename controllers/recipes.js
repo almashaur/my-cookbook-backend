@@ -24,22 +24,9 @@ router.post('/create',verifyToken,async(req,res)=>{
 router.put('/:recipeId',verifyToken,async(req,res)=>{
     try {
         req.body.owner= req.user._id
-        const ingredients = [{
-            "ingredientName": "Tomato",
-            "amount": "2 cups",
-            "alternatives": "Canned tomato"
-        },
-        {
-            "ingredientName": "Beef",
-            "amount": "200g",
-            "alternatives": "Chicken"
-        }]
+        
         const recipe =await Recipe.findById(req.params.recipeId).populate('owner')
-        
-        req.body.ingredients=ingredients
         const newRecipe = await Recipe.findByIdAndUpdate(recipe,req.body)
-        
-
         console.log(req.params.recipeId)
         res.status(201).json(recipe)
     } catch (error) {
