@@ -4,16 +4,9 @@ const verifyToken = require("../middleware/verify-token");
 
 const User = require("../models/user");
 
-router.get("/", async (req, res) => {
-  try {
-    const users = await User.find({}, "username");
+/*-------------------- Routes ----------------------*/
 
-    res.json(users);
-  } catch (err) {
-    res.status(500).json({ err: err.message });
-  }
-});
-
+// Get a user by id (Protected route)
 router.get("/:userId", verifyToken, async (req, res) => {
   try {
     if (req.user._id !== req.params.userId) {
@@ -31,5 +24,9 @@ router.get("/:userId", verifyToken, async (req, res) => {
     res.status(500).json({ err: err.message });
   }
 });
+
+// Update a user by id (Protected route)
+
+// Delete a user by id (Protected route)
 
 module.exports = router;

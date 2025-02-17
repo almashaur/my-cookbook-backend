@@ -15,7 +15,8 @@ mongoose.connection.on("connected", () => {
 });
 
 // Controllers go here
-const testJwtRouter = require("./controllers/test-jwt");
+const userRouter = require("./controllers/users");
+const recipeRouter = require("./controllers/recipes");
 const authRouter = require("./controllers/auth");
 
 // Middleware go here
@@ -25,8 +26,9 @@ app.use(express.json());
 app.use(logger("dev"));
 
 // Routes go here
-app.use("/auth", authRouter);
-app.use("/test-jwt", testJwtRouter);
+app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/recipes", recipeRouter);
 
 // App listener
 app.listen(3000, () => {
