@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verify-token");
 
-const User = require("../models/recipie");
+const User = require("../models/recipe");
 
 /*-------------------- Routes ----------------------*/
 
