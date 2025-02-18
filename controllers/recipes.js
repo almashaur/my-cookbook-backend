@@ -59,6 +59,19 @@ router.get("/user/:userId", verifyToken, async (req, res) => {
         const userRecipes = await Recipe.find({ owner: req.params.userId })
             .populate("owner")
             .sort({ createdAt: "desc" });
+
+            if (req.params.userId !== req.user._id) {
+                return res.status(403).json({ error: "Unauthorized" });
+            }
+
+            if (!userRecipes) {
+                return res.status(404).json({ error: "User has no recipes" }); 
+            }
+
+            if (userRecipes.length === 0) {
+                return res.status(404).json({ error: "User has no recipes" });
+            }
+            
         res.status(200).json(userRecipes);
     } catch (err) {
         res.status(500).json({ error: err.message });
