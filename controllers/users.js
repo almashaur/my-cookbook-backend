@@ -6,7 +6,7 @@ const User = require("../models/user");
 
 /*-------------------- Routes ----------------------*/
 
-// Get a user by id (Protected route)
+// Get a user by id (Protected route) (Ahmed)
 router.get("/:userId", verifyToken, async (req, res) => {
   try {
     if (req.user._id !== req.params.userId) {
@@ -25,7 +25,7 @@ router.get("/:userId", verifyToken, async (req, res) => {
   }
 });
 
-// Update a user by id (Protected route)
+// Update a user by id (Protected route) (Ahmed)
 router.put("/:userId", verifyToken, async (req, res) => {
   try {
     if (req.user._id !== req.params.userId) {
@@ -46,7 +46,7 @@ router.put("/:userId", verifyToken, async (req, res) => {
   }
 });
 
-// Delete a user by ID (Protected route)
+// Delete a user by id (Protected route) (Ahmed)
 router.delete("/:userId", verifyToken, async (req, res) => {
   try {
     if (req.user._id !== req.params.userId) {
@@ -54,12 +54,11 @@ router.delete("/:userId", verifyToken, async (req, res) => {
     }
 
     const user = await User.findByIdAndDelete(req.params.userId);
-
     if (!user) {
       return res.status(404).json({ err: "User not found." });
     }
 
-    res.json({ msg: "User deleted." });
+    res.status(200).json({ message: "User deleted successfully." });
   } catch (err) {
     res.status(500).json({ err: err.message });
   }

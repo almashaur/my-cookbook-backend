@@ -7,7 +7,7 @@ const User = require("../models/user");
 
 const saltRounds = 12;
 
-// Register
+// Register (Ahmed)
 router.post("/register", async (req, res) => {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username });
@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// Login
+// Login (Ahmed)
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
