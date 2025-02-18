@@ -1,17 +1,16 @@
 const mongoose = require("mongoose");
-const User = require("./user");
 
 const ingredientSchema = new mongoose.Schema({
-  ingredientName: { type: String, required: true, unique: true },
-  amount: { type: String, required: true, unique: true },
-  alternatives: [{ type: String, required: true, unique: true }],
+  ingredientName: { type: String, required: true },
+  amount: { type: String, required: true },
+  alternatives: [{ type: String, required: true }],
 });
 
 const recipeSchema = new mongoose.Schema(
   {
-    recipeName: { type: String, required: true, unique: true },
+    recipeName: { type: String, required: true },
     ingredients: [ingredientSchema],
-    instructions: [{ type: String, required: true, unique: true }],
+    instructions: [{ type: String, required: true }],
     level: {
       type: String,
       required: true,
