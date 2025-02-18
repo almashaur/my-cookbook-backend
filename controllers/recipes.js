@@ -58,7 +58,7 @@ router.get("/user/:userId", verifyToken, async (req, res) => {
     try {
         const userRecipes = await Recipe.find({ owner: req.params.userId })
             .populate("owner")
-            // .sort({ createdAt: "desc" });
+            .sort({ createdAt: "desc" });
         res.status(200).json(userRecipes);
     } catch (err) {
         res.status(500).json({ error: err.message });
