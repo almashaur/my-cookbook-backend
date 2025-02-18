@@ -29,6 +29,16 @@ router.post("/create", verifyToken, async (req, res) => {
 });
 
 // Get all recipies (Kawlaa)
+router.get("/", async (req, res) => {
+    try {
+        const recipes = await Recipe.find({})
+            .populate("owner")
+            .sort({ createdAt: "desc" });
+        res.status(200).json(recipes);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 
 // Get a recipie by id (kawlaa)
 
