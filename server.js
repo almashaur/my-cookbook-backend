@@ -26,9 +26,9 @@ app.use(express.json());
 app.use(logger("dev"));
 
 // Routes go here
-app.use("/api/users", userRouter);
-app.use("/api/auth", authRouter);
-app.use("/api/recipes", recipeRouter);
+app.use("/users", userRouter);
+app.use("/auth", authRouter);
+app.use("/recipes", recipeRouter);
 
 // App listener
 app.listen(3000, () => {
