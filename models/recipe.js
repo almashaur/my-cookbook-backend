@@ -38,8 +38,8 @@ const recipeSchema = new mongoose.Schema(
         enum: ["Pan", "Spoon", "Whisk", "Mixer"],
       },
     ],
-    image: [{ type: String, required: true }],
-    serves: [{ type: Number, required: true }],
+    image: { type: String, required: true },
+    serves: { type: Number, required: true },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
