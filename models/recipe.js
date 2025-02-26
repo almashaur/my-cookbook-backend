@@ -35,7 +35,14 @@ const recipeSchema = new mongoose.Schema(
       {
         type: String,
         required: true,
-        enum: ["Pan", "Spoon", "Whisk", "Mixer"],
+        enum: [
+          "Knife",
+          "Cutting Board",
+          "Pan",
+          "Oven",
+          "Blender",
+          "Measuring Cup",
+        ],
       },
     ],
     image: { type: String, required: true },
