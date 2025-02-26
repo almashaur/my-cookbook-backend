@@ -31,6 +31,8 @@ app.use("/api/auth", authRouter);
 app.use("/api/recipes", recipeRouter);
 
 // App listener
-app.listen(3000, () => {
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log("The express app is ready!");
 });
