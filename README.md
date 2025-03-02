@@ -141,7 +141,7 @@ All endpoints use the following base URL (set this variable in your API client)
 - Headers:
   - `Content-Type: application/json`
   - `Authorization: Bearer {{token}}`
-    
+- **Body:**
   ```json
   {
       "recipeName": "Updated Recipe Name",
